@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nail & Beauty Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Navbar underline animation */
+    nav a {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #ec4899; /* Tailwind pink-500 */
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Fade-in animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Service card shine effect */
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+    .card {
+      transition: all 0.3s ease;
+    }
+
+    /* Gallery hover shine */
+    .gallery-img {
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-img::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+      transform: rotate(25deg);
+      transition: all 0.6s ease;
+    }
+    .gallery-img:hover::after {
+      top: 100%;
+      left: 100%;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-white to-rose-100 text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <header class="fixed w-full bg-white/70 backdrop-blur-md shadow-md z-50">
+    <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-pink-600">Nailuxe</h1>
+      <ul class="flex gap-6 text-gray-700 font-medium">
+        <li><a href="#home" class="hover:text-pink-600">Home</a></li>
+        <li><a href="#services" class="hover:text-pink-600">Services</a></li>
+        <li><a href="#gallery" class="hover:text-pink-600">Gallery</a></li>
+        <li><a href="#contact" class="hover:text-pink-600">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero relative h-[70vh] flex items-center justify-center text-center text-white"
+    style="background-image: url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1500'); background-size: cover; background-position: center;">
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="hero-content relative z-10 fade-in">
+      <h2 class="text-5xl md:text-7xl font-bold"><span class="text-pink-400">Welcome</span> to <span class="text-pink-500">Nailuxe</span></h2>
+      <p class="mt-4 text-lg md:text-xl">Luxury Nail & Beauty Studio</p>
+      <a href="#services" class="mt-6 inline-block px-6 py-3 bg-pink-600 text-white font-semibold rounded-full shadow-lg hover:bg-pink-700 transition">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-20 bg-white fade-in">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-4xl font-bold text-gray-900 mb-12">Our Services</h3>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="card p-8 bg-white rounded-2xl shadow-lg border border-pink-100">
+          <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=500" class="rounded-lg mb-4 w-full h-48 object-cover" />
+          <h4 class="text-2xl font-semibold text-pink-600">Manicure</h4>
+          <p class="text-gray-600 mt-3">Pamper your hands with our luxurious manicure treatments.</p>
+        </div>
+        <div class="card p-8 bg-white rounded-2xl shadow-lg border border-pink-100">
+          <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?w=500" class="rounded-lg mb-4 w-full h-48 object-cover" />
+          <h4 class="text-2xl font-semibold text-pink-600">Cosmetics</h4>
+          <p class="text-gray-600 mt-3">Premium cosmetic services to enhance your natural glow.</p>
+        </div>
+        <div class="card p-8 bg-white rounded-2xl shadow-lg border border-pink-100">
+          <img src="https://images.unsplash.com/photo-1664643411326-6c589531be3c?w=500" class="rounded-lg mb-4 w-full h-48 object-cover" />
+          <h4 class="text-2xl font-semibold text-pink-600">Pedicure</h4>
+          <p class="text-gray-600 mt-3">Relax and refresh with soothing pedicure experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="py-20 bg-gradient-to-r from-rose-100 via-white to-pink-100 fade-in">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-4xl font-bold text-gray-900 mb-12">Our Work</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="gallery-img"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=500" class="rounded-xl shadow-md hover:scale-105 transition" /></div>
+        <div class="gallery-img"><img src="https://images.unsplash.com/photo-1531646317777-0619c7c5d1d3?w=500" class="rounded-xl shadow-md hover:scale-105 transition" /></div>
+        <div class="gallery-img"><img src="https://images.unsplash.com/photo-1519419451778-14599a49ec41?w=500" class="rounded-xl shadow-md hover:scale-105 transition" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 bg-white fade-in">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h3 class="text-4xl font-bold text-gray-900 mb-6">Book an Appointment</h3>
+      <p class="text-gray-600 mb-8">Get in touch with us today for the ultimate beauty experience.</p>
+      <form class="grid gap-6">
+        <input type="text" placeholder="Your Name" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+        <input type="email" placeholder="Your Email" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500" />
+        <textarea placeholder="Your Message" rows="4" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
+        <button class="px-6 py-3 bg-pink-600 text-white font-semibold rounded-full shadow-lg hover:bg-pink-700 transition">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-pink-600 text-white py-6 mt-20 fade-in">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+      <p>&copy; 2025 Nailuxe. All Rights Reserved.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-gray-200">Instagram</a>
+        <a href="#" class="hover:text-gray-200">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Reveal Script -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2 };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
+
+</body>
+</html>
