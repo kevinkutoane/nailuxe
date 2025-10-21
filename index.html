@@ -3,155 +3,1054 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nail & Beauty Studio</title>
+  <title>Nailuxe - Luxury Nail Art & Beauty Studio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    /* Navbar underline animation */
+    html { 
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    /* Advanced Keyframe Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.85);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes rotateIn {
+      from {
+        opacity: 0;
+        transform: rotate(-10deg) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(236, 72, 153, 0.4), inset 0 0 20px rgba(236, 72, 153, 0.1);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(236, 72, 153, 0.8), inset 0 0 20px rgba(236, 72, 153, 0.2);
+      }
+    }
+
+    @keyframes pulse-circle {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+    }
+
+    @keyframes orbit {
+      0% {
+        transform: rotate(0deg) translateX(30px) rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg) translateX(30px) rotate(-360deg);
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
+      }
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce-in {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes gradient-shift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Navbar */
+    header {
+      animation: slideInDown 0.8s ease-out;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(236, 72, 153, 0.1);
+    }
+
+    .logo {
+      animation: slideInLeft 0.8s ease-out;
+      font-size: 1.75rem;
+      background: linear-gradient(135deg, #ec4899, #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
     nav a {
       position: relative;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      letter-spacing: 0.5px;
     }
-    nav a::after {
+
+    nav a::before {
       content: '';
       position: absolute;
       bottom: -4px;
       left: 0;
       width: 0%;
       height: 2px;
-      background: #ec4899; /* Tailwind pink-500 */
-      transition: width 0.3s ease;
+      background: linear-gradient(90deg, #ec4899, #f43f5e);
+      transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
-    nav a:hover::after {
+
+    nav a:hover::before {
       width: 100%;
     }
 
-    /* Fade-in animations */
+    nav a:hover {
+      color: #ec4899;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background-image: url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1500');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.5) 0%, rgba(236, 72, 153, 0.3) 100%);
+      animation: gradient-shift 8s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(244, 63, 94, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      animation: scaleIn 1s ease-out;
+    }
+
+    .hero-content h2 {
+      animation: fadeInUp 0.8s ease-out;
+      font-size: 3.5rem;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    .hero-content h2 span {
+      background: linear-gradient(135deg, #fbbf24, #ec4899, #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .hero-content p {
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+
+    .hero-content a {
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    /* Floating Elements */
+    .floating-element {
+      position: absolute;
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    .floating-element-1 {
+      top: 10%;
+      left: 5%;
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, #ec4899, #f43f5e);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+      filter: blur(40px);
+    }
+
+    .floating-element-2 {
+      bottom: 10%;
+      right: 5%;
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #fbbf24, #f97316);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite 1s;
+      filter: blur(60px);
+    }
+
+    /* Fade-in for sections */
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.8s ease-out;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+
     .fade-in.show {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Service card shine effect */
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-    }
-    .card {
-      transition: all 0.3s ease;
+    /* Section Headings */
+    section h3 {
+      animation: fadeInUp 0.8s ease-out;
+      position: relative;
+      display: inline-block;
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
     }
 
-    /* Gallery hover shine */
-    .gallery-img {
-      position: relative;
-      overflow: hidden;
-    }
-    .gallery-img::after {
+    section h3::before {
       content: '';
       position: absolute;
-      top: -100%;
+      left: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg, #ec4899, #f43f5e);
+      border-radius: 50%;
+      animation: pulse-circle 2s ease-in-out infinite;
+    }
+
+    section h3::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #ec4899, #f43f5e);
+      border-radius: 2px;
+      margin-top: 15px;
+      animation: slideInRight 0.8s ease-out 0.3s both;
+    }
+
+    /* Service Cards */
+    .card {
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(236, 72, 153, 0.2);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(250, 235, 245, 0.5));
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.3s; }
+    .card:nth-child(3) { animation-delay: 0.5s; }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
       left: -50%;
       width: 200%;
       height: 200%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
-      transform: rotate(25deg);
-      transition: all 0.6s ease;
+      background: linear-gradient(135deg, transparent, rgba(236, 72, 153, 0.2), transparent);
+      transform: rotate(45deg);
+      transition: all 0.6s;
+      opacity: 0;
     }
+
+    .card:hover::before {
+      opacity: 1;
+      top: 0;
+      left: 0;
+    }
+
+    .card:hover {
+      transform: translateY(-20px) rotateX(5deg);
+      box-shadow: 0 30px 60px rgba(236, 72, 153, 0.3), inset -1px -1px 1px rgba(255, 255, 255, 0.3);
+      border-color: rgba(236, 72, 153, 0.5);
+    }
+
+    .card img {
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-radius: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card:hover img {
+      transform: scale(1.12) rotate(2deg);
+    }
+
+    .card h4 {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(135deg, #ec4899, #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Gallery */
+    .gallery-img {
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+      border-radius: 1rem;
+      cursor: pointer;
+      aspect-ratio: 1;
+    }
+
+    .gallery-img:nth-child(1) { animation-delay: 0.1s; }
+    .gallery-img:nth-child(2) { animation-delay: 0.3s; }
+    .gallery-img:nth-child(3) { animation-delay: 0.5s; }
+
+    .gallery-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .gallery-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.4), rgba(244, 63, 94, 0.4));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
     .gallery-img:hover::after {
-      top: 100%;
-      left: 100%;
+      opacity: 1;
     }
+
+    .gallery-img:hover img {
+      transform: scale(1.15) rotate(-3deg);
+    }
+
+    /* Button Styles */
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      border: 2px solid #ec4899;
+      background: linear-gradient(135deg, #ec4899, #f43f5e);
+      color: white;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #f43f5e, #ec4899);
+      transform: translateX(-100%);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: -1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(236, 72, 153, 0.5);
+      letter-spacing: 2px;
+    }
+
+    .btn-primary:hover::before {
+      transform: translateX(0);
+    }
+
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-primary:active {
+      transform: translateY(-2px);
+    }
+
+    /* Form */
+    .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid rgba(236, 72, 153, 0.2);
+      border-radius: 0.8rem;
+      background: rgba(255, 255, 255, 0.5);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #ec4899;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+      transform: scale(1.02);
+    }
+
+    /* Footer */
+    footer {
+      animation: slideInUp 0.8s ease-out;
+      background: linear-gradient(135deg, #ec4899, #f43f5e);
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    footer a {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    footer a:hover {
+      transform: translateY(-2px);
+      opacity: 0.8;
+    }
+
+    /* Staggered children animations */
+    .fade-in.show > * {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .fade-in.show > *:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in.show > *:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in.show > *:nth-child(3) { animation-delay: 0.3s; }
+
+    /* Special section backgrounds */
+    #services {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(250, 235, 245, 0.5));
+    }
+
+    #gallery {
+      background: linear-gradient(135deg, rgba(250, 235, 245, 0.5), rgba(255, 240, 245, 0.8));
+      position: relative;
+    }
+
+    #gallery::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(244, 63, 94, 0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    #contact {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(250, 235, 245, 0.3));
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-content h2 {
+        font-size: 2rem;
+      }
+
+      section h3 {
+        font-size: 1.8rem;
+      }
+
+      section h3::before {
+        display: none;
+      }
+    }
+
+    /* Offering Cards */
+    .offering-card {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .offering-card:nth-child(1) { animation-delay: 0.1s; }
+    .offering-card:nth-child(2) { animation-delay: 0.3s; }
+    .offering-card:nth-child(3) { animation-delay: 0.5s; }
+
+    /* Feature Items */
+    .feature-item {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    /* Testimonial Cards */
+    .testimonial-card {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+    .testimonial-card:nth-child(2) { animation-delay: 0.3s; }
+    .testimonial-card:nth-child(3) { animation-delay: 0.5s; }
+
+    /* Feature animations on load */
+    @keyframes animate-fade-in-left {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes animate-fade-in-right {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .animate-fade-in-left {
+      animation: animate-fade-in-left 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .animate-fade-in-right {
+      animation: animate-fade-in-right 0.8s ease-out forwards;
+      opacity: 0;
+    }
+
+    .feature-item:nth-child(1) { animation-delay: 0.1s; }
+    .feature-item:nth-child(2) { animation-delay: 0.3s; }
+    .feature-item:nth-child(3) { animation-delay: 0.5s; }
+    .feature-item:nth-child(4) { animation-delay: 0.7s; }
   </style>
 </head>
-<body class="bg-gradient-to-br from-pink-50 via-white to-rose-100 text-gray-800 font-sans">
+<body class="bg-white text-gray-900">
+
+  <!-- Floating Background Elements -->
+  <div class="floating-element floating-element-1"></div>
+  <div class="floating-element floating-element-2"></div>
 
   <!-- Navbar -->
-  <header class="fixed w-full bg-white/70 backdrop-blur-md shadow-md z-50">
-    <nav class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-pink-600">Nailuxe</h1>
-      <ul class="flex gap-6 text-gray-700 font-medium">
-        <li><a href="#home" class="hover:text-pink-600">Home</a></li>
-        <li><a href="#services" class="hover:text-pink-600">Services</a></li>
-        <li><a href="#gallery" class="hover:text-pink-600">Gallery</a></li>
-        <li><a href="#contact" class="hover:text-pink-600">Contact</a></li>
+  <header class="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-pink-100/20" role="banner">
+    <nav class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center" role="navigation" aria-label="Main navigation">
+      <h1 class="text-3xl font-bold logo">Nailuxe</h1>
+      <ul class="flex gap-8 text-gray-700 font-medium">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#offerings">Offerings</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section id="home" class="hero relative h-[70vh] flex items-center justify-center text-center text-white"
-    style="background-image: url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1500'); background-size: cover; background-position: center;">
-    <div class="absolute inset-0 bg-black/40"></div>
-    <div class="hero-content relative z-10 fade-in">
-      <h2 class="text-5xl md:text-7xl font-bold"><span class="text-pink-400">Welcome</span> to <span class="text-pink-500">Nailuxe</span></h2>
-      <p class="mt-4 text-lg md:text-xl">Luxury Nail & Beauty Studio</p>
-      <a href="#services" class="mt-6 inline-block px-6 py-3 bg-pink-600 text-white font-semibold rounded-full shadow-lg hover:bg-pink-700 transition">Explore Services</a>
+  <section id="home" class="hero relative min-h-screen flex items-center justify-center text-center text-white mt-16">
+    <div class="hero-content relative z-10 max-w-3xl px-6">
+      <h2 class="text-6xl md:text-7xl font-bold mb-6 leading-tight">
+        Welcome to <span>Nailuxe</span>
+      </h2>
+      <p class="text-xl md:text-2xl mb-8 font-light">Luxury Nail & Beauty Studio</p>
+      <p class="text-lg mb-10 font-light opacity-90">Where Art Meets Elegance</p>
+      <a href="#services" class="btn-primary inline-flex items-center gap-2">
+        <span>Explore Services</span>
+      </a>
     </div>
   </section>
 
   <!-- Services -->
-  <section id="services" class="py-20 bg-white fade-in">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h3 class="text-4xl font-bold text-gray-900 mb-12">Our Services</h3>
-      <div class="grid md:grid-cols-3 gap-10">
-        <div class="card p-8 bg-white rounded-2xl shadow-lg border border-pink-100">
-          <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=500" class="rounded-lg mb-4 w-full h-48 object-cover" />
-          <h4 class="text-2xl font-semibold text-pink-600">Manicure</h4>
-          <p class="text-gray-600 mt-3">Pamper your hands with our luxurious manicure treatments.</p>
+  <section id="services" class="py-32 fade-in">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <h3 class="text-5xl font-bold text-gray-900">Our Services</h3>
+        <p class="text-gray-600 mt-6 text-lg">Discover our premium beauty treatments crafted with perfection</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card p-8 bg-white rounded-2xl shadow-lg">
+          <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=500" alt="Luxury manicure service" class="rounded-lg mb-6 w-full h-56 object-cover" />
+          <h4 class="text-2xl font-semibold mb-4">Manicure</h4>
+          <p class="text-gray-600 leading-relaxed">Pamper your hands with our luxurious manicure treatments using premium products and expert techniques.</p>
         </div>
-        <div class="card p-8 bg-white rounded-2xl shadow-lg border border-pink-100">
-          <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?w=500" class="rounded-lg mb-4 w-full h-48 object-cover" />
-          <h4 class="text-2xl font-semibold text-pink-600">Cosmetics</h4>
-          <p class="text-gray-600 mt-3">Premium cosmetic services to enhance your natural glow.</p>
+        <div class="card p-8 bg-white rounded-2xl shadow-lg">
+          <img src="https://images.unsplash.com/photo-1583209814683-c023dd293cc6?w=500" alt="Professional cosmetics application" class="rounded-lg mb-6 w-full h-56 object-cover" />
+          <h4 class="text-2xl font-semibold mb-4">Cosmetics</h4>
+          <p class="text-gray-600 leading-relaxed">Premium cosmetic services to enhance your natural glow with professional makeup and skincare.</p>
         </div>
-        <div class="card p-8 bg-white rounded-2xl shadow-lg border border-pink-100">
-          <img src="https://images.unsplash.com/photo-1664643411326-6c589531be3c?w=500" class="rounded-lg mb-4 w-full h-48 object-cover" />
-          <h4 class="text-2xl font-semibold text-pink-600">Pedicure</h4>
-          <p class="text-gray-600 mt-3">Relax and refresh with soothing pedicure experiences.</p>
+        <div class="card p-8 bg-white rounded-2xl shadow-lg">
+          <img src="https://images.unsplash.com/photo-1664643411326-6c589531be3c?w=500" alt="Relaxing pedicure treatment" class="rounded-lg mb-6 w-full h-56 object-cover" />
+          <h4 class="text-2xl font-semibold mb-4">Pedicure</h4>
+          <p class="text-gray-600 leading-relaxed">Relax and refresh with our soothing pedicure experiences designed for ultimate comfort and style.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offerings & Pricing -->
+  <section id="offerings" class="py-32 fade-in bg-gradient-to-br from-white via-pink-50 to-rose-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <h3 class="text-5xl font-bold text-gray-900">Our Offerings</h3>
+        <p class="text-gray-600 mt-6 text-lg">Tailored packages for every beauty need</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Starter Package -->
+        <div class="offering-card relative bg-white rounded-2xl p-8 shadow-lg border border-pink-100 hover:border-pink-300 transition-all duration-300">
+          <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+            <span class="inline-block px-4 py-2 bg-gradient-to-r from-pink-400 to-pink-600 text-white rounded-full text-sm font-semibold">STARTER</span>
+          </div>
+          <h4 class="text-2xl font-bold text-gray-900 mt-4 mb-2">Essential Glow</h4>
+          <p class="text-gray-600 mb-6">Perfect for first-time visitors</p>
+          <div class="mb-6">
+            <div class="text-4xl font-bold text-transparent bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text mb-2">$45</div>
+            <p class="text-gray-600 text-sm">per session</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              Basic Manicure
+            </li>
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              Nail Polish Selection
+            </li>
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              Hand Massage
+            </li>
+            <li class="flex items-center gap-2 text-gray-400">
+              <span class="w-2 h-2 bg-gray-300 rounded-full"></span>
+              <span class="line-through">Art Design</span>
+            </li>
+          </ul>
+          <button class="w-full py-3 px-6 bg-gray-100 text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition">Get Started</button>
+        </div>
+
+        <!-- Premium Package -->
+        <div class="offering-card relative bg-white rounded-2xl p-8 shadow-lg border-2 border-pink-500 hover:shadow-2xl transition-all duration-300 transform scale-105">
+          <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+            <span class="inline-block px-4 py-2 bg-gradient-to-r from-rose-500 to-red-600 text-white rounded-full text-sm font-semibold">MOST POPULAR</span>
+          </div>
+          <h4 class="text-2xl font-bold text-gray-900 mt-4 mb-2">Luxury Experience</h4>
+          <p class="text-gray-600 mb-6">Our bestselling premium package</p>
+          <div class="mb-6">
+            <div class="text-4xl font-bold text-transparent bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text mb-2">$85</div>
+            <p class="text-gray-600 text-sm">per session</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              Luxury Manicure
+            </li>
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              Custom Nail Art
+            </li>
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              Intensive Hand Treatment
+            </li>
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              Arm & Shoulder Massage
+            </li>
+          </ul>
+          <button class="w-full py-3 px-6 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-semibold rounded-lg hover:shadow-lg transition">Book Now</button>
+        </div>
+
+        <!-- Elite Package -->
+        <div class="offering-card relative bg-white rounded-2xl p-8 shadow-lg border border-pink-100 hover:border-pink-300 transition-all duration-300">
+          <div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+            <span class="inline-block px-4 py-2 bg-gradient-to-r from-amber-400 to-orange-500 text-white rounded-full text-sm font-semibold">VIP</span>
+          </div>
+          <h4 class="text-2xl font-bold text-gray-900 mt-4 mb-2">Elite Collection</h4>
+          <p class="text-gray-600 mb-6">Ultimate luxury experience</p>
+          <div class="mb-6">
+            <div class="text-4xl font-bold text-transparent bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text mb-2">$150</div>
+            <p class="text-gray-600 text-sm">per session</p>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              Complete Mani-Pedi Combo
+            </li>
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              3D Nail Art Design
+            </li>
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              Premium Skincare
+            </li>
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              Full Body Relaxation
+            </li>
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-pink-500 rounded-full"></span>
+              Complimentary Beverage
+            </li>
+          </ul>
+          <button class="w-full py-3 px-6 bg-gray-100 text-gray-900 font-semibold rounded-lg hover:bg-gray-200 transition">Inquire</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-32 fade-in bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <h3 class="text-5xl font-bold text-gray-900">Why Choose Nailuxe</h3>
+        <p class="text-gray-600 mt-6 text-lg">What sets us apart from the rest</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- Feature 1 -->
+        <div class="feature-item flex gap-6 animate-fade-in-left">
+          <div class="flex-shrink-0">
+            <div class="w-16 h-16 bg-gradient-to-br from-pink-400 to-pink-600 rounded-xl flex items-center justify-center text-white text-2xl">✨</div>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold text-gray-900 mb-2">Premium Products</h4>
+            <p class="text-gray-600">We use only the finest, salon-grade products from trusted international brands for maximum quality and safety.</p>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-item flex gap-6 animate-fade-in-right">
+          <div class="flex-shrink-0">
+            <div class="w-16 h-16 bg-gradient-to-br from-rose-400 to-rose-600 rounded-xl flex items-center justify-center text-white text-2xl">👩‍🎨</div>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold text-gray-900 mb-2">Expert Technicians</h4>
+            <p class="text-gray-600">Our certified nail artists and beauty professionals bring years of experience and creative expertise to every service.</p>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-item flex gap-6 animate-fade-in-left">
+          <div class="flex-shrink-0">
+            <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl flex items-center justify-center text-white text-2xl">🌿</div>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold text-gray-900 mb-2">Eco-Friendly Practices</h4>
+            <p class="text-gray-600">We're committed to sustainability with eco-conscious products, waste reduction, and responsible sourcing.</p>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-item flex gap-6 animate-fade-in-right">
+          <div class="flex-shrink-0">
+            <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-600 rounded-xl flex items-center justify-center text-white text-2xl">💆</div>
+          </div>
+          <div>
+            <h4 class="text-xl font-bold text-gray-900 mb-2">Relaxing Atmosphere</h4>
+            <p class="text-gray-600">Step into our serene sanctuary designed for ultimate comfort with calming ambiance and personalized attention.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-32 fade-in bg-gradient-to-br from-pink-50 via-white to-rose-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <h3 class="text-5xl font-bold text-gray-900">Client Testimonials</h3>
+        <p class="text-gray-600 mt-6 text-lg">Hear from our happy customers</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg border border-pink-100 hover:shadow-xl transition-all duration-300">
+          <div class="flex items-center gap-1 mb-4">
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+          </div>
+          <p class="text-gray-700 mb-6 leading-relaxed">"Absolutely stunning work! The attention to detail and the relaxing atmosphere made me feel like royalty. I'll definitely be back!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-rose-400 rounded-full"></div>
+            <div>
+              <h5 class="font-bold text-gray-900">Sarah Johnson</h5>
+              <p class="text-sm text-gray-600">Verified Customer</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg border border-pink-100 hover:shadow-xl transition-all duration-300">
+          <div class="flex items-center gap-1 mb-4">
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+          </div>
+          <p class="text-gray-700 mb-6 leading-relaxed">"Best manicure I've ever had! The technician was so talented and professional. Premium quality at fair prices. Highly recommend!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-amber-400 rounded-full"></div>
+            <div>
+              <h5 class="font-bold text-gray-900">Emily Chen</h5>
+              <p class="text-sm text-gray-600">Verified Customer</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card bg-white rounded-2xl p-8 shadow-lg border border-pink-100 hover:shadow-xl transition-all duration-300">
+          <div class="flex items-center gap-1 mb-4">
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+            <span class="text-amber-400 text-xl">⭐</span>
+          </div>
+          <p class="text-gray-700 mb-6 leading-relaxed">"My go-to place for beauty treatments! The staff is so welcoming and the results are always perfect. Worth every penny!"</p>
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-gradient-to-br from-rose-400 to-pink-400 rounded-full"></div>
+            <div>
+              <h5 class="font-bold text-gray-900">Jessica Martinez</h5>
+              <p class="text-sm text-gray-600">Verified Customer</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Gallery -->
-  <section id="gallery" class="py-20 bg-gradient-to-r from-rose-100 via-white to-pink-100 fade-in">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h3 class="text-4xl font-bold text-gray-900 mb-12">Our Work</h3>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="gallery-img"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=500" class="rounded-xl shadow-md hover:scale-105 transition" /></div>
-        <div class="gallery-img"><img src="https://images.unsplash.com/photo-1531646317777-0619c7c5d1d3?w=500" class="rounded-xl shadow-md hover:scale-105 transition" /></div>
-        <div class="gallery-img"><img src="https://images.unsplash.com/photo-1519419451778-14599a49ec41?w=500" class="rounded-xl shadow-md hover:scale-105 transition" /></div>
+  <section id="gallery" class="py-32 fade-in">
+
+  <!-- Gallery -->
+  <section id="gallery" class="py-32 fade-in">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <h3 class="text-5xl font-bold text-gray-900">Our Work</h3>
+        <p class="text-gray-600 mt-6 text-lg">Stunning creations from our talented artists</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="gallery-img">
+          <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=500" alt="Gallery work" />
+        </div>
+        <div class="gallery-img">
+          <img src="https://images.unsplash.com/photo-1531646317777-0619c7c5d1d3?w=500" alt="Gallery work" />
+        </div>
+        <div class="gallery-img">
+          <img src="https://images.unsplash.com/photo-1519419451778-14599a49ec41?w=500" alt="Gallery work" />
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-20 bg-white fade-in">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h3 class="text-4xl font-bold text-gray-900 mb-6">Book an Appointment</h3>
-      <p class="text-gray-600 mb-8">Get in touch with us today for the ultimate beauty experience.</p>
-      <form class="grid gap-6">
-        <input type="text" placeholder="Your Name" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500" />
-        <input type="email" placeholder="Your Email" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500" />
-        <textarea placeholder="Your Message" rows="4" class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500"></textarea>
-        <button class="px-6 py-3 bg-pink-600 text-white font-semibold rounded-full shadow-lg hover:bg-pink-700 transition">Send Message</button>
+  <section id="contact" class="py-32 fade-in">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <h3 class="text-5xl font-bold text-gray-900">Book an Appointment</h3>
+        <p class="text-gray-600 mt-6 text-lg">Get in touch with us for the ultimate beauty experience</p>
+      </div>
+      <form class="grid gap-6" aria-label="Contact form">
+        <input type="text" name="name" placeholder="Your Name" required class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500" aria-label="Your name" />
+        <input type="email" name="email" placeholder="Your Email" required class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500" aria-label="Your email" />
+        <textarea name="message" placeholder="Your Message" rows="5" required class="w-full p-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-500" aria-label="Your message"></textarea>
+        <button type="submit" class="btn-primary py-3 px-8 justify-center">
+          <span>Send Message</span>
+        </button>
       </form>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-pink-600 text-white py-6 mt-20 fade-in">
-    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-      <p>&copy; 2025 Nailuxe. All Rights Reserved.</p>
-      <div class="flex gap-4">
-        <a href="#" class="hover:text-gray-200">Instagram</a>
-        <a href="#" class="hover:text-gray-200">Facebook</a>
+  <footer class="text-white mt-20 fade-in">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-12">
+        <!-- Brand -->
+        <div>
+          <h3 class="text-2xl font-bold">Nailuxe</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">Your destination for luxury nail art and beauty treatments. Experience elegance and expertise.</p>
+        </div>
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li><a href="#home" class="hover:text-white transition">Home</a></li>
+            <li><a href="#services" class="hover:text-white transition">Services</a></li>
+            <li><a href="#offerings" class="hover:text-white transition">Offerings</a></li>
+            <li><a href="#gallery" class="hover:text-white transition">Gallery</a></li>
+          </ul>
+        </div>
+        <!-- Contact -->
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Contact</h4>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li>📍 123 Luxury Lane, Beauty City</li>
+            <li>📞 (555) 123-4567</li>
+            <li>✉️ hello@nailuxe.com</li>
+            <li>⏰ Mon-Sat: 10AM-8PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-white-300">&copy; 2025 Nailuxe. All Rights Reserved.</p>
+        <div class="flex gap-6">
+          <a href="#" class="text-gray-300 hover:text-white transition font-medium">Instagram</a>
+          <a href="#" class="text-gray-300 hover:text-white transition font-medium">Facebook</a>
+          <a href="#" class="text-gray-300 hover:text-white transition font-medium">TikTok</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -159,7 +1058,8 @@
   <!-- Scroll Reveal Script -->
   <script>
     const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.2 };
+    const appearOptions = { threshold: 0.15, rootMargin: '0px 0px -100px 0px' };
+    
     const appearOnScroll = new IntersectionObserver(function(entries, observer) {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
@@ -167,7 +1067,15 @@
         observer.unobserve(entry.target);
       });
     }, appearOptions);
+    
     faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // Smooth parallax effect on hero
+    const hero = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      hero.style.backgroundPosition = `center ${scrollY * 0.5}px`;
+    });
   </script>
 
 </body>
